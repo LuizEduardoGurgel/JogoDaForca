@@ -12,16 +12,22 @@
 }
 
 body {
+  font-family: mono;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  background: var(--bg) no-repeat center center/cover;
-  transition: background 0.5s ease-in-out;
-  /* Transição suave */
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+  background-color: #000; /* Cor de fundo enquanto carrega */
+  transition: background-image 1s ease-in-out; /* Transição suave da imagem de fundo */
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+}
+
+body.loading {
+  background-color: #000; /* Fundo padrão enquanto carrega */
 }
 
 :root {
