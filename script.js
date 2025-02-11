@@ -1,8 +1,8 @@
 const listaPalavras = [
-    "ferro", "fornalha", "pedra", "bigorna", "redstone", "carvão", "quartz", 
-    "enxada", "aldeão", "trigo", "lobo", "papagaio", "livro", "diamante", "netherite", 
-    "gato", "bússola", "pistão", "tnt", "afiação", "mapa", "esmeralda", "enderman", 
-    "sela", "peixe", "tocha", "terra", "areia", "caldeirão", "tridente", "slime", "madeira", "picareta", "pá", "espada", "Lapis lazuli"
+    "ferro", "fornalha", "pedra", "bigorna", "redstone", "carvao", "quartz", 
+    "enxada", "aldeao", "trigo", "lobo", "papagaio", "livro", "diamante", "netherite", 
+    "gato", "bussola", "pistao", "tnt", "afiação", "mapa", "esmeralda", "enderman", 
+    "sela", "peixe", "tocha", "terra", "areia", "caldeirão", "tridente", "slime", "madeira", "picareta", "pa", "espada", "Lapis lazuli"
 ];
 
 let palavraEscolhida, letrasAdivinhadas, tentativas;
@@ -59,8 +59,17 @@ function adivinharLetra(letra, divLetra) {
 }
 
 function atualizarBackground(tentativas) {
-    document.body.className = ''; // Remove todas as classes de fundo
-    document.body.classList.add(`back${6 - tentativas}`);
+    const body = document.body;
+    const newBackground = `url(./img/back${6 - tentativas}.png)`;
+
+    // Adiciona a classe "loading" para evitar fundo branco durante a troca
+    body.classList.add('loading');
+
+    // Aplica a nova imagem de fundo com transição
+    setTimeout(() => {
+        body.style.backgroundImage = newBackground;
+        body.classList.remove('loading'); // Remove a classe "loading" após a troca
+    }, 100); // Delay de 100ms para evitar visualização do fundo branco
 }
 
 function atualizarJogo() {
