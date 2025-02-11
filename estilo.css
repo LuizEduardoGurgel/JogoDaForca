@@ -1,0 +1,61 @@
+* {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #ffffff;
+}
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 0px;
+    padding: 0px;
+    background: url(./backgroundimg.png) no-repeat top center/cover;
+}
+
+header {
+    align-items: center;  
+    margin-top: 20px;
+}
+
+#containerJogo {
+    margin-top: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#containerPalavra {
+    font-size: 2em;
+    letter-spacing: 10px;
+}
+
+#containerLetras {
+    margin-top: 20px;
+}
+
+.letra {
+    background-color: #4d775c;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    border-radius: 10px;
+    color: white;
+}
+
+.letra.correta {
+    background-color: #a3e4a3;
+}
+
+.letra.errada {
+    background-color: #e4a3a3;
+}
+
+#mensagem {
+    margin-top: 20px;
+    font-size: 1.5em;
+}
