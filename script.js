@@ -1,8 +1,8 @@
 const listaPalavras = [
-    "espada de ouro", "fornalha", "mesa de encantamentos", "bigorna", "redstone", "carvão", "quartz", 
-    "enxada de diamante", "aldeão", "trigo", "lobo", "papagaio", "livro", "diamante", "elmo de netherite", 
-    "livro encantado", "bússola", "pistão", "dinamite", "afiação", "mapa", "esmeralda", "olho do Ender", 
-    "sela", "peixe", "tocha", "terra", "areia", "caldeirão", "tridente", "slime", "madeira", "picareta de diamante"
+    "ferro", "fornalha", "pedra", "bigorna", "redstone", "carvão", "quartz", 
+    "enxada", "aldeão", "trigo", "lobo", "papagaio", "livro", "diamante", "netherite", 
+    "gato", "bússola", "pistão", "tnt", "afiação", "mapa", "esmeralda", "enderman", 
+    "sela", "peixe", "tocha", "terra", "areia", "caldeirão", "tridente", "slime", "madeira", "picareta", "pá", "espada", "Lapis lazuli"
 ];
 
 let palavraEscolhida, letrasAdivinhadas, tentativas;
