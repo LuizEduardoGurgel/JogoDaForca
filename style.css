@@ -8,73 +8,100 @@
 * {
   font-family: 'Craft', sans-serif;
   color: #ffffff;
+  box-sizing: border-box;
 }
+
 body {
-  font-family: mono;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
-  margin: 0px;
-  padding: 0px;
-  background: var(--bg) no-repeat top center/cover;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: var(--bg) no-repeat center center/cover;
+  transition: background 0.5s ease-in-out;
+  /* Transição suave */
 }
 
-:root{
+:root {
   --bg: url(./img/back0.png);
 }
-.back1{
+
+.back1 {
   --bg: url(./img/back1.png);
 }
-.back2{
+
+.back2 {
   --bg: url(./img/back2.png);
 }
-.back3{
+
+.back3 {
   --bg: url(./img/back3.png);
 }
-.back4{
+
+.back4 {
   --bg: url(./img/back4.png);
 }
-.back5{
+
+.back5 {
   --bg: url(./img/back5.png);
 }
 
-.back6{
+.back6 {
   --bg: url(./img/back6.png);
 }
 
+/* Pré-carrega as imagens invisivelmente para evitar piscadas */
+.preload {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+
 header {
-  align-items: center;  
+  text-align: center;
   margin-top: 20px;
 }
 
 #containerJogo {
-  margin-top: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 90%;
+  max-width: 600px;
+  padding: 20px;
+  margin-top: 10vh;
 }
 
 #containerPalavra {
-  font-size: 2em;
-  letter-spacing: 10px;
+  font-size: clamp(1.5em, 5vw, 2.5em);
+  letter-spacing: 5px;
+  text-align: center;
 }
 
 #containerLetras {
   margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
 }
 
 .letra {
   background-color: #4d775c;
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: clamp(30px, 8vw, 50px);
+  height: clamp(30px, 8vw, 50px);
   text-align: center;
-  line-height: 40px;
+  line-height: normal;
   cursor: pointer;
   border-radius: 10px;
-  color: white;
+  font-size: clamp(1em, 3vw, 1.5em);
 }
 
 .letra.correta {
@@ -87,5 +114,24 @@ header {
 
 #mensagem {
   margin-top: 20px;
-  font-size: 1.5em;
+  font-size: clamp(1em, 3vw, 1.5em);
+  text-align: center;
+}
+
+#btnReiniciar {
+  display: none;
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: white;
+  background-color: #4CAF50; /* Verde Minecraft */
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#btnReiniciar:hover {
+  background-color: #45a049; /* Um tom mais escuro ao passar o mouse */
 }

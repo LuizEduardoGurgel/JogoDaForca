@@ -1,59 +1,87 @@
-const listaPalavras = ["vida", "jogo", "escola", "trabalho", "hospital", "preto", "branco", "carrro", "pessoa",
-                        "trator", "amigo", "colega", "estudar", "correr", "maratona", "livro", "celular",
-                        "computador", "consertar", "livro", "aluno", "ganhar", "achar", "perder", "nuvem",
-                        "sol", "planeta", "terra", "praia", "piscina", "esporte", "lazer", "construir", "poder"];
-let palavraEscolhida = listaPalavras[Math.floor(Math.random() * listaPalavras.length)];
-let letrasAdivinhadas = [];
-let tentativas = 6;
+const listaPalavras = [
+    "espada de ouro", "fornalha", "mesa de encantamentos", "bigorna", "redstone", "carvão", "quartz", 
+    "enxada de diamante", "aldeão", "trigo", "lobo", "papagaio", "livro", "diamante", "elmo de netherite", 
+    "livro encantado", "bússola", "pistão", "dinamite", "afiação", "mapa", "esmeralda", "olho do Ender", 
+    "sela", "peixe", "tocha", "terra", "areia", "caldeirão", "tridente", "slime", "madeira", "picareta de diamante"
+];
+
+let palavraEscolhida, letrasAdivinhadas, tentativas;
+
+function iniciarJogo() {
+    palavraEscolhida = listaPalavras[Math.floor(Math.random() * listaPalavras.length)];
+    letrasAdivinhadas = [];
+    tentativas = 6;
+    
+    document.getElementById('mensagem').textContent = "";
+    document.getElementById('btnReiniciar').style.display = "none"; // Esconde o botão de reinício
+    
+    exibirPalavra();
+    exibirLetras();
+    atualizarBackground(tentativas);
+}
 
 function exibirPalavra() {
     const containerPalavra = document.getElementById('containerPalavra');
     containerPalavra.innerHTML = palavraEscolhida
         .split('')
-        .map(letra => (letrasAdivinhadas.includes(letra) ? letra : '_'))
+        .map(letra => (letrasAdivinhadas.includes(letra) || letra === ' ' ? letra : '_'))
         .join(' ');
 }
 
 function exibirLetras() {
     const containerLetras = document.getElementById('containerLetras');
     containerLetras.innerHTML = '';
+
     for (let i = 65; i <= 90; i++) {
         const letra = String.fromCharCode(i).toLowerCase();
         const divLetra = document.createElement('div');
         divLetra.className = 'letra';
         divLetra.textContent = letra;
-        divLetra.addEventListener('click', () => adivinharLetra(letra));
+        divLetra.addEventListener('click', () => adivinharLetra(letra, divLetra));
         containerLetras.appendChild(divLetra);
     }
 }
 
-function adivinharLetra(letra) {
+function adivinharLetra(letra, divLetra) {
     if (!letrasAdivinhadas.includes(letra) && tentativas > 0) {
         letrasAdivinhadas.push(letra);
-        if (!palavraEscolhida.includes(letra)) {
+
+        if (palavraEscolhida.includes(letra)) {
+            divLetra.classList.add('correta');
+        } else {
             tentativas--;
+            divLetra.classList.add('errada');
             document.getElementById('mensagem').textContent = `Tentativas restantes: ${tentativas}`;
         }
+
         atualizarJogo();
     }
 }
 
+function atualizarBackground(tentativas) {
+    document.body.className = ''; // Remove todas as classes de fundo
+    document.body.classList.add(`back${6 - tentativas}`);
+}
+
 function atualizarJogo() {
     exibirPalavra();
-    const letras = document.querySelectorAll('.letra');
-    letras.forEach(divLetra => {
-        if (letrasAdivinhadas.includes(divLetra.textContent)) {
-            divLetra.classList.add(palavraEscolhida.includes(divLetra.textContent) ? 'correta' : 'errada');
-        }
-    });
+    atualizarBackground(tentativas);
+
     if (tentativas === 0) {
         document.getElementById('mensagem').textContent = `Game Over! A palavra era: ${palavraEscolhida}`;
-    } else if (palavraEscolhida.split('').every(letra => letrasAdivinhadas.includes(letra))) {
+        finalizarJogo();
+    } else if (palavraEscolhida.split('').every(letra => letra === ' ' || letrasAdivinhadas.includes(letra))) {
         document.getElementById('mensagem').textContent = 'Parabéns! Você venceu!';
+        finalizarJogo();
     }
 }
 
-window.onload = () => {
-    exibirPalavra();
-    exibirLetras();
-};
+function finalizarJogo() {
+    document.querySelectorAll('.letra').forEach(divLetra => divLetra.style.pointerEvents = 'none');
+    document.getElementById('btnReiniciar').style.display = "block"; // Mostra o botão de reinício
+}
+
+// Reinicia o jogo ao clicar no botão
+document.getElementById('btnReiniciar').addEventListener('click', iniciarJogo);
+
+window.onload = iniciarJogo;
