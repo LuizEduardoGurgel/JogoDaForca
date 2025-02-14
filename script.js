@@ -1,5 +1,5 @@
 const listaPalavras = [
-    "ferro", "fornalha", "pedra", "bigorna", "redstone", "carvao", "quartz", 
+    "ferro", "fornalha", "pedra", "bigorna", "redstone", "carvao", "quartzo", 
     "enxada", "aldeao", "trigo", "lobo", "papagaio", "livro", "diamante", "netherite", 
     "gato", "bussola", "pistao", "tnt", "afiação", "mapa", "esmeralda", "enderman", 
     "sela", "peixe", "tocha", "terra", "areia", "caldeirão", "tridente", "slime", "madeira", "picareta", "pa", "espada", "Lapis lazuli"
