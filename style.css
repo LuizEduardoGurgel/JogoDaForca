@@ -1,0 +1,157 @@
+@font-face {
+  font-family: 'Craft';
+  src: url(Monocraft.ttf) format('truetype'); /* Fonte personalizada Monocraft */
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Estilo global para todos os elementos */
+* {
+  font-family: 'Craft', sans-serif; /* Usa a fonte Craft */
+  color: #ffffff; /* Cor do texto branco */
+  box-sizing: border-box; /* Inclui padding e border no cálculo do tamanho total */
+}
+
+/* Estilo do corpo da página */
+body {
+  font-family: mono; /* Fonte do corpo */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh; /* Altura total da tela */
+  margin: 0px;
+  padding: 0px;
+  background-color: #000; /* Cor de fundo enquanto carrega */
+  transition: background-image 1s ease-in-out; /* Transição suave da imagem de fundo */
+  background-repeat: no-repeat; /* Não repete a imagem de fundo */
+  background-position: top center; /* Posição da imagem de fundo */
+  background-size: cover; /* Tamanho da imagem de fundo cobre toda a área */
+}
+
+/* Estilo do corpo enquanto carrega */
+body.loading {
+  background-color: #000; /* Fundo padrão enquanto carrega */
+}
+
+/* Variáveis CSS para as imagens de fundo */
+:root {
+  --bg: url(./img/back0.png);
+}
+
+.back1 {
+  --bg: url(./img/back1.png);
+}
+
+.back2 {
+  --bg: url(./img/back2.png);
+}
+
+.back3 {
+  --bg: url(./img/back3.png);
+}
+
+.back4 {
+  --bg: url(./img/back4.png);
+}
+
+.back5 {
+  --bg: url(./img/back5.png);
+}
+
+.back6 {
+  --bg: url(./img/back6.png);
+}
+
+/* Pré-carrega as imagens invisivelmente para evitar piscadas */
+.preload {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+/* Estilo do cabeçalho */
+header {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Estilo do container principal do jogo */
+#containerJogo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 600px;
+  padding: 20px;
+  margin-top: 10vh;
+}
+
+/* Estilo do container da palavra */
+#containerPalavra {
+  font-size: clamp(1.5em, 5vw, 2.5em);
+  letter-spacing: 5px;
+  text-align: center;
+}
+
+/* Estilo do container das letras */
+#containerLetras {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Estilo das letras */
+.letra {
+  background-color: #4d775c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: clamp(30px, 8vw, 50px);
+  height: clamp(30px, 8vw, 50px);
+  text-align: center;
+  line-height: normal;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: clamp(1em, 3vw, 1.5em);
+}
+
+/* Estilo das letras corretas */
+.letra.correta {
+  background-color: #a3e4a3;
+}
+
+/* Estilo das letras erradas */
+.letra.errada {
+  background-color: #e4a3a3;
+}
+
+/* Estilo das mensagens */
+#mensagem {
+  margin-top: 20px;
+  font-size: clamp(1em, 3vw, 1.5em);
+  text-align: center;
+}
+
+/* Estilo do botão Reiniciar */
+#btnReiniciar {
+  display: none;
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: white;
+  background-color: #4CAF50; /* Verde Minecraft */
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Estilo do botão Reiniciar ao passar o mouse */
+#btnReiniciar:hover {
+  background-color: #45a049; /* Um tom mais escuro ao passar o mouse */
+}
